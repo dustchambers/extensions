@@ -2,7 +2,7 @@ import { AI, Action, ActionPanel, Grid, LaunchProps } from "@raycast/api";
 import { showFailureToast, useAI } from "@raycast/utils";
 import CopyAsSubmenu from "./components/CopyAsSubmenu";
 import { addToHistory } from "./lib/history";
-import { getFormattedColor, getPreviewColor } from "./utils";
+import { getFormattedColor, getPreviewColor } from "./lib/utils";
 
 export default function GenerateColors(props: LaunchProps<{ arguments: Arguments.GenerateColors }>) {
   const { data, isLoading } = useAI(

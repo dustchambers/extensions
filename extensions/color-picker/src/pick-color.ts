@@ -3,8 +3,8 @@ import { showFailureToast } from "@raycast/utils";
 import { callbackLaunchCommand } from "raycast-cross-extension";
 import colorNamer from "color-namer";
 import { addToHistory } from "./lib/history";
-import { Color, PickColorCommandLaunchProps } from "./types";
-import { getFormattedColor, getColorByProximity } from "./utils";
+import { Color, PickColorCommandLaunchProps } from "./lib/types";
+import { getFormattedColor, getColorByProximity } from "./lib/utils";
 
 export default async function command(props: PickColorCommandLaunchProps) {
   const { showColorName } = getPreferenceValues<Preferences.PickColor>();

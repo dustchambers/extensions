@@ -3,8 +3,8 @@ import { showFailureToast } from "@raycast/utils";
 import { callbackLaunchCommand, LaunchOptions } from "raycast-cross-extension";
 import { useEffect } from "react";
 import { addToHistory } from "./lib/history";
-import { Color } from "./types";
-import { getFormattedColor } from "./utils";
+import { Color } from "./lib/types";
+import { getFormattedColor } from "./lib/utils";
 
 export default function Command({
   launchContext = {},

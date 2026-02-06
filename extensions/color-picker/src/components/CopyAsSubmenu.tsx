@@ -1,6 +1,6 @@
 import { Action, ActionPanel, Icon, Keyboard } from "@raycast/api";
-import { getFormattedColor } from "../utils";
-import { HistoryColor } from "../types";
+import { getFormattedColor } from "../lib/utils";
+import { HistoryColor } from "../lib/types";
 
 type CopyAsSubmenuProps = {
   color: HistoryColor;

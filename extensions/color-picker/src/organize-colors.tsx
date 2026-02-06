@@ -16,8 +16,8 @@ import { showFailureToast, usePromise } from "@raycast/utils";
 import CopyAsSubmenu from "./components/CopyAsSubmenu";
 import { EditTitle } from "./components/EditTitle";
 import { useHistory } from "./lib/history";
-import { HistoryItem } from "./types";
-import { getFormattedColor, getPreviewColor } from "./utils";
+import { HistoryItem } from "./lib/types";
+import { getFormattedColor, getPreviewColor } from "./lib/utils";
 
 const preferences: Preferences.OrganizeColors = getPreferenceValues();
 
