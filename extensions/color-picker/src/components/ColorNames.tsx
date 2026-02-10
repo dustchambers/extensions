@@ -3,6 +3,7 @@ import { Color } from "color-namer";
 import { normalizeColorHex } from "../lib/utils";
 
 export const ColorNameListItem = ({ color }: { color: Color }) => {
+  // Some palettes return hex codes without the hash symbol
   const hexCode = `#${color.hex.replace(/^#/, "")}`;
 
   return (
