@@ -57,6 +57,8 @@ jobs:
       - name: Cleanup github_utils
         run: |
           rm -rf ${{ github.workspace }}/github_utils
+      - name: Setup Cargo bin path
+        run: echo "$HOME/.cargo/bin" >> $GITHUB_PATH
       - name: Run Ray CLI
         id: ray_cli
         uses: raycast/github-actions/ray@v1.17.0
