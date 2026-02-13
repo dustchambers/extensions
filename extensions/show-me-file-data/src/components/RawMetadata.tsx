@@ -13,7 +13,6 @@ export default function RawMetadata({ filePath }: RawMetadataProps) {
     gpsCoordinates,
     gpsLinks,
     colorAverage,
-    aiDescription,
     isLoading,
   } = useFileMetadata(filePath);
 
@@ -50,7 +49,6 @@ export default function RawMetadata({ filePath }: RawMetadataProps) {
         }
       : null,
     colorAverage,
-    aiDescription,
   };
 
   const jsonString = JSON.stringify(allMetadata, null, 2);
