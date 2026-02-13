@@ -1,0 +1,98 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "show-me-file-data",
+  "title": "Show Me Data",
+  "description": "Show comprehensive file metadata for files selected in Finder",
+  "icon": "command-icon.png",
+  "author": "dustintchambers",
+  "categories": ["Developer Tools", "Productivity", "System"],
+  "license": "MIT",
+  "preferences": [
+    {
+      "name": "showBasicInfo",
+      "type": "checkbox",
+      "title": "Sidebar Sections",
+      "label": "Basic Info",
+      "description": "Show file name, size, type, and path in the sidebar",
+      "required": false,
+      "default": true
+    },
+    {
+      "name": "showDates",
+      "type": "checkbox",
+      "label": "Dates",
+      "description": "Show created, modified, and accessed dates in the sidebar",
+      "required": false,
+      "default": true
+    },
+    {
+      "name": "showPermissions",
+      "type": "checkbox",
+      "label": "Permissions",
+      "description": "Show file permissions, UID, GID, inode in the sidebar",
+      "required": false,
+      "default": true
+    },
+    {
+      "name": "showSpotlight",
+      "type": "checkbox",
+      "label": "Spotlight Metadata",
+      "description": "Show macOS Spotlight metadata (content type, kind, etc.) in the sidebar",
+      "required": false,
+      "default": true
+    },
+    {
+      "name": "showImageDetails",
+      "type": "checkbox",
+      "label": "Image Details",
+      "description": "Show dimensions, color space, DPI for image files in the sidebar",
+      "required": false,
+      "default": true
+    },
+    {
+      "name": "showAudioVideo",
+      "type": "checkbox",
+      "label": "Audio/Video Details",
+      "description": "Show duration, bit rate, channels for media files in the sidebar",
+      "required": false,
+      "default": true
+    },
+    {
+      "name": "showExif",
+      "type": "checkbox",
+      "label": "EXIF Data",
+      "description": "Show camera and lens EXIF data for photos in the sidebar",
+      "required": false,
+      "default": true
+    }
+  ],
+  "commands": [
+    {
+      "name": "show-file-info",
+      "title": "Show File Info",
+      "subtitle": "Show Me Data",
+      "description": "Show metadata for files selected in Finder",
+      "mode": "view"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.103.3",
+    "@raycast/utils": "^1.19.1",
+    "exifreader": "^4.22.1"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^2.1.1",
+    "@types/node": "22.13.4",
+    "@types/react": "19.0.8",
+    "eslint": "^9.20.0",
+    "prettier": "^3.5.1",
+    "typescript": "^5.7.3"
+  },
+  "scripts": {
+    "build": "ray build --skip-types -e dist -o dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "publish": "npx @raycast/api@latest publish"
+  }
+}
