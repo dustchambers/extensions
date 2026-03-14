@@ -2,7 +2,7 @@ import { rename } from "fs/promises";
 import path from "path";
 import { SIDECAR_EXTENSIONS } from "./constants";
 import { VerifyResult } from "./verifier";
-import { CopyResult } from "./copier";
+import { CopyResult } from "./types";
 import { logLine } from "./logger";
 
 export interface RenameResult {

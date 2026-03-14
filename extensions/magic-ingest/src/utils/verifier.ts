@@ -1,6 +1,6 @@
 import { createHash } from "crypto";
 import { createReadStream } from "fs";
-import { CopyResult } from "./copier";
+import { CopyResult } from "./types";
 import { logLine } from "./logger";
 
 function hashFile(filePath: string): Promise<string> {
