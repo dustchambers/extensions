@@ -19,6 +19,13 @@
       "title": "Ingest Status",
       "description": "Monitor or stop a running background ingest",
       "mode": "view"
+    },
+    {
+      "name": "ingest-subtitle",
+      "title": "Ingest Progress",
+      "description": "Live progress bar in Raycast root search (enable in settings)",
+      "mode": "no-view",
+      "interval": "10s"
     }
   ],
   "dependencies": {

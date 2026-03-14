@@ -41,6 +41,7 @@ interface ProgressInfo {
   progress: { current: number; total: number };
   currentFile?: string;
   filePercent?: number;
+  error?: string | null;
 }
 
 function isProcessAlive(pid: number): boolean {
@@ -184,6 +185,8 @@ export default function IngestStatus() {
   const bar =
     progress.total > 0 ? progressBar(progress.current, progress.total, 20) : "";
 
+  const errorMsg = info?.error ?? null;
+
   // Build subtitle — include current large file if present
   let subtitle: string | undefined;
   if (progress.total > 0) {
@@ -219,6 +222,15 @@ export default function IngestStatus() {
           }
         />
       </List.Section>
+
+      {errorMsg && (
+        <List.Section title="Error">
+          <List.Item
+            icon={{ source: Icon.ExclamationMark, tintColor: Color.Red }}
+            title={errorMsg}
+          />
+        </List.Section>
+      )}
 
       <List.Section title="Source Cards">
         {cards.map((card) => (

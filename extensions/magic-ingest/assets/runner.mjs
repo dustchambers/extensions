@@ -65,8 +65,12 @@ async function logSessionEnd(s) {
 
 // ── Notifications (no-op, progress shown via menu bar) ──────────────────────
 
-async function notify(_title, _message) {
-  // Intentionally empty — menu bar provides live progress
+async function notify(title, message) {
+  try {
+    await execFileAsync("/usr/bin/osascript", [
+      "-e", `display notification "${message.replace(/"/g, '\\"')}" with title "${title.replace(/"/g, '\\"')}"`
+    ]);
+  } catch { /* notification is best-effort */ }
 }
 
 // ── Scanner ──────────────────────────────────────────────────────────────────
@@ -281,6 +285,16 @@ async function copyFiles(files, destDir, onProgress, progressState) {
       errors.push(errMsg);
       results.push({ success: false, sourcePath: f.absolutePath, destPath, error: errMsg });
       await logLine(errMsg);
+
+      // Abort immediately on disk full — no point trying remaining files
+      if (err.code === "ENOSPC") {
+        const copied = results.filter(r => r.success).length;
+        await logLine(`DISK FULL — aborting copy after ${copied} of ${files.length} files`);
+        if (progressState) {
+          progressState.error = `Disk full — copied ${copied} of ${files.length} files`;
+        }
+        break;
+      }
     }
     // Update progress after every file
     if (onProgress) await onProgress("copying", i + 1, files.length);
@@ -401,6 +415,7 @@ async function main() {
     cards: opts.volumes.map(v => ({ name: v.name, fileCount: 0 })),
     stage: "scanning",
     progress: { current: 0, total: 0 },
+    error: null,
   };
 
   // Serialise writes — prevent overlapping writeFile/rename on .tmp
